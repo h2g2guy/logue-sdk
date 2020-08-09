@@ -124,7 +124,8 @@ DINCDIR = $(PROJECTDIR)/inc \
           $(PLATFORMDIR)/inc \
 	  $(PLATFORMDIR)/inc/dsp \
 	  $(PLATFORMDIR)/inc/utils \
-          $(CMSISDIR)/Include
+          $(CMSISDIR)/Core/Include \
+          $(CMSISDIR)/DSP/Include \
 
 INCDIR := $(patsubst %,-I%,$(DINCDIR) $(UINCDIR))
 
