@@ -34,6 +34,21 @@ SCRIPT_DIR="$(pwd)/$(dirname $0)"
 
 pushd ${SCRIPT_DIR} 2>&1 > /dev/null
 
+COPY_VERBOSITY="-#"
+
+for arg in "$@"
+do
+    case $arg in
+        -s)
+            COPY_VERBOSITY="-s"
+            shift
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done
+
 PKGNAME="gcc-arm-none-eabi"
 VERSION="9-2020-q2"
 
@@ -74,7 +89,7 @@ SHA1SUM=$(which sha1sum) || assert_success "dependency not found..." || exit $?
 
 if [[ ! -f "${ARCHIVE_NAME}" ]]; then
     echo ">> Downloading..."
-    ${CURL} -# -L -o "${ARCHIVE_NAME}" "${ARCHIVE_URL}"
+    ${CURL} ${COPY_VERBOSITY} -L -o "${ARCHIVE_NAME}" "${ARCHIVE_URL}"
     assert_success "Download of ${ARCHIVE_NAME} failed..." || exit $?
 fi
 
