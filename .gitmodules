@@ -1,3 +1,0 @@
-[submodule "platform/ext/CMSIS"]
-	path = platform/ext/CMSIS
-	url = https://github.com/ARM-software/CMSIS.git
